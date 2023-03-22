@@ -1,0 +1,213 @@
+body {
+  overflow: hidden;
+
+  --dark: #231C35;
+  --middle: #2A2B47;
+  --middle-light: #30304D;
+  --light: #484564;
+  --highlight: #5B5271;
+}
+
+body {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+#loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(18, 14, 27, 0.9);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+  transition: opacity 2s ease;
+}
+
+#loader.loaded {
+  opacity: 0;
+}
+
+#preview {
+  flex-grow: 1;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+/* width */
+#preview::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #231C3533;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--light);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--highlight);
+}
+
+#right-bar,
+#left-bar {
+  font-family: 'Noto Sans', sans-serif;
+  color: whitesmoke;
+  background-color: var(--dark);
+  min-width: calc(var(--width) * 1px);
+  height: 100vh;
+  padding: 1rem;
+  overflow-y: scroll;
+}
+
+#right-bar h1,
+#left-bar h1 {
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+/* Card Styles */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  background-color: var(--middle);
+  border: 1px solid var(--light);
+  border-radius: 5px;
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+
+  transition: background-color 0.5s ease;
+}
+
+.card:hover {
+  background-color: var(--middle-light);
+}
+
+.card p {
+  margin: 0;
+}
+
+.card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card.element::before,
+.card.container::before,
+.prop::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translateY(-100%);
+  font-size: 12px;
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+.card.element:hover::before,
+.card.container:hover::before,
+.prop:hover::before {
+  opacity: 0.75;
+}
+
+.card.element::before {
+  content: "element";
+}
+
+.card.container::before {
+  content: "container";
+}
+
+.prop::before {
+  content: var(--label);
+}
+
+.edit-card,
+.delete-card {
+  height: 1.25rem;
+  width: 1.25rem;
+  opacity: 0.7;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  cursor: pointer;
+}
+
+.edit-card:hover,
+.delete-card:hover {
+  opacity: 1;
+  transform: scale(0.9);
+}
+
+/* Card Content Manipulators */
+.item-input,
+button.add-card,
+.prop-input {
+  font-family: 'Noto Sans', sans-serif;
+  color: whitesmoke;
+  background-color: var(--middle);
+  border: 1px solid var(--light);
+}
+
+.item-input {
+  margin-top: 0.5rem;
+  resize: none;
+}
+
+.item-input,
+.prop-input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 5px;
+}
+
+.item-input.disabled,
+.prop.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+button.add-card {
+  border-radius: 50%;
+  font-size: 22px;
+  height: 1em;
+  width: 1em;
+  line-height: 0;
+  padding: 0 0 0.2em 0;
+  margin: 0.5rem 0;
+  opacity: 0.45;
+  transition: opacity 0.5s ease;
+}
+
+button.add-card:hover {
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* Right Bar Components */
+.prop {
+  position: relative;
+  margin-top: 1.5rem;
+}
+
+/* MISC */
+.hidden {
+  display: none;
+}
