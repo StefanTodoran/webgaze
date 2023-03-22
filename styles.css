@@ -29,7 +29,16 @@ body {
 }
 
 #loader.loaded {
-  opacity: 0;
+  animation: fade 2s forwards;
+}
+
+@keyframes fade {
+  0%, 50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 #preview {

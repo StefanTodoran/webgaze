@@ -144,7 +144,7 @@
 
   function populateRightBar() {
     const right_bar = document.getElementById('right-bar');
-    right_bar.classList.remove('hidden');
+    // right_bar.classList.remove('hidden');
 
     edit_card = this.parentNode.parentNode.parentNode;
     const label = getCardLabel(edit_card);
